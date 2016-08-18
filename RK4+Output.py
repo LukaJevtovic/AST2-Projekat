@@ -66,7 +66,6 @@ class telo:
 tela = []                
 
 
-
 tela.append(telo(1.5e11,0,0,0,2*3.14159*1.5e11/(365*24*3600),0,0,0,0,6e24))
 tela.append(telo(0,0,0,0,0,0,0,0,0,2e30))
 
@@ -74,8 +73,8 @@ x = []
 y = []
 z = []
 G = 6.67e-11
-dt = 86000
-tmax = 86400*365*10
+dt = 10
+tmax = 86400
 t = 0
 N=2
 while t < tmax: 
@@ -93,12 +92,12 @@ while t < tmax:
         tela[i].a1y = Fy / tela[i].m
         tela[i].a1z = Fz / tela[i].m  
     for i in range(N):
-        tela[i].v1x = tela[i].vx + tela[i].a1x * t
-        tela[i].v1y = tela[i].vy + tela[i].a1y * t
-        tela[i].v1z = tela[i].vz + tela[i].a1z * t
-        tela[i].x1 = tela[i].x + tela[i].vx * t
-        tela[i].y1 = tela[i].y + tela[i].vy * t
-        tela[i].z1 = tela[i].z + tela[i].vz * t
+        tela[i].v1x = tela[i].vx + tela[i].a1x * dt
+        tela[i].v1y = tela[i].vy + tela[i].a1y * dt
+        tela[i].v1z = tela[i].vz + tela[i].a1z * dt
+        tela[i].x1 = tela[i].x + tela[i].vx * dt
+        tela[i].y1 = tela[i].y + tela[i].vy * dt
+        tela[i].z1 = tela[i].z + tela[i].vz * dt
     for i in range(N):
         Fx = 0
         Fy = 0
@@ -172,18 +171,17 @@ while t < tmax:
         z.append(tela[i].z)
     t += dt    
     print(t * 100 /tmax)
-        
-plt.scatter(x, y)
     
-   
+"""   
 file=open("simulacija.txt", "w")
 
 for i in range(N):
     
     file.write(str(tela[-i].m) + "\n" + str(tela[-i].x) + "\n" + str(tela[-i].y) + "\n" + str(tela[-i].z) + "\n" + str(tela[-i].vx) + "\n" + str(tela[-i].vy) + "\n" + str(tela[-i].vz))
 file.close
+""" 
  
 plt.scatter(x,y)
 plt.show()
-
-print(tela[1].m)
+print(tela[0].x)
+print(tela[0].y)
