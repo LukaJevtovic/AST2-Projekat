@@ -65,7 +65,6 @@ class telo:
 
 tela = []                
 
-
 tela.append(telo(1.5e11,0,0,0,2*3.14159*1.5e11/(365*24*3600),0,0,0,0,6e24))
 tela.append(telo(0,0,0,0,0,0,0,0,0,2e30))
 
@@ -73,7 +72,7 @@ x = []
 y = []
 z = []
 G = 6.67e-11
-dt = 10
+dt = 250
 tmax = 86400
 t = 0
 N=2
@@ -172,7 +171,7 @@ while t < tmax:
     t += dt    
     print(t * 100 /tmax)
     
-"""   
+"""
 file=open("simulacija.txt", "w")
 
 for i in range(N):
